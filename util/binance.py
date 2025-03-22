@@ -2,6 +2,8 @@ import ccxt
 import pandas as pd
 
 binance = ccxt.binance()
+binance_futures = ccxt.binanceusdm()
+
 MIN_24H_VOLUME = 500_000_000  # 5억 USDT
 
 def get_price(symbol="BTC/USDT"):
@@ -16,12 +18,13 @@ def get_ohlcv(symbol="BTC/USDT", timeframe="15m", limit=100):
     return df
 
 def get_top_volume_symbols():
-    tickers = binance.fetch_tickers()
+    tickers = binance_futures.fetch_tickers()
     symbols = []
 
     for symbol, data in tickers.items():
-        if not symbol.endswith("/USDT"):
+        if not symbol.endswith("USDT"):
             continue
+
         volume = data.get("quoteVolume")
         if volume and volume >= MIN_24H_VOLUME:
             symbols.append(symbol)
