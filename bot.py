@@ -4,6 +4,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 from handler.price_alert import check_target_price, check_price_drop
 from handler.rsi_alert import check_rsi
 from handler.volume_alert import check_volume_spike
+from command.price_ping import handle_price_command
 
 BOT_TOKEN = "7781510842:AAHU-Y8Nv6RXD7CakxoHIjWtD5YYARy8CQs"
 CHAT_ID = 5875632146
@@ -24,6 +25,7 @@ async def start_bot():
     await app.start()
     await app.updater.start_polling()
     print("🤖 Bot is running...")
+    await app.add_handler(CommandHandler("price", handle_price_command))
     await asyncio.Event().wait()
 
 if __name__ == "__main__":
