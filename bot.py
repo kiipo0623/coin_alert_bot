@@ -21,6 +21,8 @@ async def start_bot():
     job_queue.run_repeating(check_rsi, interval=300, chat_id=CHAT_ID)
     job_queue.run_repeating(check_volume_spike, interval=300, chat_id=CHAT_ID)
 
+    app.add_handler(CommandHandler("price", handle_price_command))
+
     await app.initialize()
     await app.start()
     await app.updater.start_polling()
