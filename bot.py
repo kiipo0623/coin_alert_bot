@@ -27,7 +27,6 @@ async def start_bot():
     await app.start()
     await app.updater.start_polling()
     print("🤖 Bot is running...")
-    await app.add_handler(CommandHandler("price", handle_price_command))
     await asyncio.Event().wait()
 
 if __name__ == "__main__":
