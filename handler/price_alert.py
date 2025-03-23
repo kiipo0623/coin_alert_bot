@@ -45,7 +45,7 @@ async def check_target_price(context: ContextTypes.DEFAULT_TYPE):
     last_time = state.get("time")
     minutes_since = (now - last_time).total_seconds() / 60 if last_time else None
 
-    if last_status != current_status or (minutes_since is not None and minutes_since >= ALERT_INTERVAL_MINUTES):
+    if current_status != last_status and (last_time is None or minutes_since >= ALERT_INTERVAL_MINUTES):
         emoji = "📈" if current_status == "above" else "📉"
         verb = "rose above" if current_status == "above" else "fell below"
 
