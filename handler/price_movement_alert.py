@@ -3,8 +3,8 @@ from util.binance import get_price, get_ohlcv, get_top_volume_symbols
 import datetime
 
 ALERT_LOG = {}  # {symbol: last_alert_level}
-VOLUME_THRESHOLD = 500_000_000  # 500 million
-START_THRESHOLD = 0.005  # 0.5%
+VOLUME_THRESHOLD = 500_000_000 
+START_THRESHOLD = 0.005
 SYMBOL_CACHE = [] 
 
 def get_open_price(symbol: str):
@@ -44,8 +44,8 @@ async def check_price_deviation(context: ContextTypes.DEFAULT_TYPE):
 
             while deviation >= threshold:
                 level += 1
-                threshold *= 2  # 0.5%, 1%, 2%, 4%, 8%, ...
-
+                threshold *= 2
+                
             if level == 0 or ALERT_LOG.get(symbol, -1) >= level:
                 continue
 

@@ -4,7 +4,7 @@ import pandas as pd
 binance = ccxt.binance()
 binance_futures = ccxt.binanceusdm()
 
-MIN_24H_VOLUME = 500_000_000  # 5억 USDT
+MIN_24H_VOLUME = 500_000_000
 
 def get_price(symbol="BTC/USDT"):
     return binance.fetch_ticker(symbol)["last"]

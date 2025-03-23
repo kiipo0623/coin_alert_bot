@@ -1,7 +1,6 @@
 from telegram.ext import ContextTypes
 from util.binance import get_ohlcv, get_top_volume_symbols
 
-# 공통 로직 함수
 async def detect_volume_spike(
     context: ContextTypes.DEFAULT_TYPE,
     timeframe: str,
@@ -34,7 +33,6 @@ async def detect_volume_spike(
         except Exception as e:
             print(f"[WARN] {symbol} error in {label}: {e}")
 
-# 기존 5분봉 감지 (이름만 변경)
 async def check_volume_spike_5m(context: ContextTypes.DEFAULT_TYPE):
     await detect_volume_spike(
         context=context,
@@ -43,7 +41,6 @@ async def check_volume_spike_5m(context: ContextTypes.DEFAULT_TYPE):
         label="5m / x2"
     )
 
-# 신규 1분봉 감지 (더 빠른 대응용)
 async def check_volume_spike_1m(context: ContextTypes.DEFAULT_TYPE):
     await detect_volume_spike(
         context=context,
