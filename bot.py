@@ -6,11 +6,7 @@ from handler.rsi_alert import check_rsi
 from handler.volume_alert import check_volume_spike_5m, check_volume_spike_1m
 from handler.price_movement_alert import check_price_deviation
 from command.price_ping import handle_price_command
-<<<<<<< HEAD
-from handler.volume_live_alert import 
-=======
 from handler.volume_live_alert import check_volume_spike_3x
->>>>>>> d602143 (add volume_live_alert)
 
 BOT_TOKEN = "7781510842:AAHU-Y8Nv6RXD7CakxoHIjWtD5YYARy8CQs"
 CHAT_ID = 5875632146
@@ -28,7 +24,6 @@ async def start_bot():
     job_queue.run_repeating(check_volume_spike_5m, interval=300, chat_id=CHAT_ID)
     job_queue.run_repeating(check_price_deviation, interval=60, chat_id=CHAT_ID)
     job_queue.run_repeating(check_volume_spike_1m, interval=60, chat_id=CHAT_ID)
-
 
     # WebSocket: live check
     asyncio.create_task(check_volume_spike_3x(BOT_TOKEN, CHAT_ID))
