@@ -96,7 +96,11 @@ async def connect_and_listen(bot, symbols):
             break  # 재연결 루프로 나가기
 
 
+<<<<<<< HEAD
 async def start_volume_ws_alert(token, chat_id):
+=======
+async def check_volume_spike_3x(token, chat_id):
+>>>>>>> d602143 (add volume_live_alert)
     global BOT_TOKEN, CHAT_ID
     BOT_TOKEN = token
     CHAT_ID = chat_id
