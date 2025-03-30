@@ -54,7 +54,7 @@ async def handle_message(bot, data):
 
     ratio = curr_volume / prev_volume
     price_change_pct = ((current_price - open_price) / open_price) * 100
-    price_change_line = f"{open_price:.1f} → {current_price:.1f} ({price_change_pct:+.3f}%) from 1m open"
+    price_change_line = f"{open_price:.4f} → {current_price:.4f} ({price_change_pct:+.2f}%) from 1m open"
     last_alert_time = LIVE_ALERT_LOG.get(symbol)
     minutes_since = (now - last_alert_time).total_seconds() / 60 if last_alert_time else None
 
